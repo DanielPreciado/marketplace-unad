@@ -1,90 +1,112 @@
-# React + Vite + Hono + Cloudflare Workers
+# Marketplace UNAD - Prototipo MVP TRL5
 
-[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/cloudflare/templates/tree/main/vite-react-template)
+Plataforma web tipo marketplace para apoyar la comercializacion digital de emprendedores locales (Tocaima, Viota y zonas cercanas a Girardot) en el contexto del curso **Proyecto de Grado - UNAD**.
 
-This template provides a minimal setup for building a React application with TypeScript and Vite, designed to run on Cloudflare Workers. It features hot module replacement, ESLint integration, and the flexibility of Workers deployments.
+## 1) Contexto academico
 
-![React + TypeScript + Vite + Cloudflare Workers](https://imagedelivery.net/wSMYJvS3Xw-n339CbDyDIA/fc7b4b62-442b-4769-641b-ad4422d74300/public)
+- **Curso:** Proyecto de Grado (Codigo 202016907)
+- **Programa:** Ingenieria de Sistemas
+- **Fase:** Fase 4 - Desarrollo del componente practico
+- **Titulo del proyecto:** Desarrollo de una Plataforma Web tipo Marketplace para el Fortalecimiento Digital de Emprendedores Locales
+- **Integrantes:** Daniel Enrique Preciado Quintero, Mercy Julieth Parrado Ramirez, Natalia Garcia Alvarez
+- **Tutor:** Orlando Gomez Barboza
 
-<!-- dash-content-start -->
+## 2) Stack tecnologico
 
-🚀 Supercharge your web development with this powerful stack:
+- React 19
+- TypeScript
+- Vite 6
+- Hono
+- Cloudflare Workers
+- Wrangler
 
-- [**React**](https://react.dev/) - A modern UI library for building interactive interfaces
-- [**Vite**](https://vite.dev/) - Lightning-fast build tooling and development server
-- [**Hono**](https://hono.dev/) - Ultralight, modern backend framework
-- [**Cloudflare Workers**](https://developers.cloudflare.com/workers/) - Edge computing platform for global deployment
+## 3) Funcionalidades implementadas en el MVP
 
-### ✨ Key Features
+- Landing page con contexto del problema y propuesta de valor.
+- Seleccion de rol (comprador / emprendedor) con usuarios demo.
+- Autenticacion simulada para prototipo academico (sin backend real).
+- Catalogo de productos con datos semilla locales.
+- Busqueda por texto y filtro por categoria.
+- Carrito de compras y generacion de pedidos.
+- Confirmacion de pedidos con estado inicial `Pendiente`.
+- Dashboard de emprendedor con:
+  - CRUD basico de productos;
+  - consulta de pedidos recibidos;
+  - actualizacion de estado (`Pendiente`, `Confirmado`, `Entregado`, `Cancelado`);
+  - estadisticas basicas (productos, pedidos, pendientes, ventas estimadas, producto mas solicitado).
+- Seccion de validacion TRL5 dentro de la app.
+- Persistencia local usando `localStorage`.
 
-- 🔥 Hot Module Replacement (HMR) for rapid development
-- 📦 TypeScript support out of the box
-- 🛠️ ESLint configuration included
-- ⚡ Zero-config deployment to Cloudflare's global network
-- 🎯 API routes with Hono's elegant routing
-- 🔄 Full-stack development setup
-- 🔎 Built-in Observability to monitor your Worker
+## 4) Arquitectura de prototipo
 
-Get started in minutes with local development or deploy directly via the Cloudflare dashboard. Perfect for building modern, performant web applications at the edge.
+La aplicacion usa persistencia local (navegador) para acelerar el prototipo TRL5:
 
-<!-- dash-content-end -->
+- rol/usuario activo;
+- productos;
+- pedidos;
+- carrito por comprador.
 
-## Getting Started
+No se usan pagos reales, autenticacion avanzada ni base de datos remota en esta iteracion.
 
-To start a new project with this template, run:
+## 5) Usuarios demo
 
-```bash
-npm create cloudflare@latest -- --template=cloudflare/templates/vite-react-template
-```
+- Emprendedor:
+  - `emprendedor@demo.com / 123456`
+  - `emprendedor2@demo.com / 123456`
+- Comprador:
+  - `comprador@demo.com / 123456`
+  - `comprador2@demo.com / 123456`
 
-A live deployment of this template is available at:
-[https://react-vite-template.templates.workers.dev](https://react-vite-template.templates.workers.dev)
-
-## Development
-
-Install dependencies:
+## 6) Instalacion y ejecucion local
 
 ```bash
 npm install
-```
-
-Start the development server with:
-
-```bash
 npm run dev
 ```
 
-Your application will be available at [http://localhost:5173](http://localhost:5173).
+Aplicacion local: `http://localhost:5173`
 
-## Production
-
-Build your project for production:
+## 7) Construccion (build)
 
 ```bash
 npm run build
 ```
 
-Preview your build locally:
+## 8) Despliegue en Cloudflare Workers
 
 ```bash
-npm run preview
+npm run deploy
 ```
 
-Deploy your project to Cloudflare Workers:
+## 9) Nota para entornos con proxy corporativo
 
 ```bash
-npm run build && npm run deploy
+env -u HTTP_PROXY -u HTTPS_PROXY -u ALL_PROXY \
+    -u http_proxy -u https_proxy -u all_proxy \
+    NO_PROXY=localhost,127.0.0.1,::1 \
+    npm run dev
 ```
 
-Monitor your workers:
+## 10) Enlaces de evidencia
 
-```bash
-npx wrangler tail
-```
+- **Repositorio GitHub:** pendiente de anexar en documento maestro
+- **Despliegue Cloudflare:** pendiente de anexar
+- **Video demostrativo (max. 10 min):** pendiente de anexar
 
-## Additional Resources
+## 11) Estado TRL5
 
-- [Cloudflare Workers Documentation](https://developers.cloudflare.com/workers/)
-- [Vite Documentation](https://vitejs.dev/guide/)
-- [React Documentation](https://reactjs.org/)
-- [Hono Documentation](https://hono.dev/)
+El prototipo se encuentra en **estado TRL5 (validacion en entorno relevante simulado)**:
+
+- flujos comprador y emprendedor operativos;
+- navegacion funcional;
+- datos de contexto local;
+- documentacion de validacion y plan de pruebas.
+
+Detalles: [docs/TRL5_VALIDATION.md](docs/TRL5_VALIDATION.md)
+
+## 12) Documentacion adicional
+
+- [docs/TRL5_VALIDATION.md](docs/TRL5_VALIDATION.md)
+- [docs/TEST_PLAN.md](docs/TEST_PLAN.md)
+- [docs/VIDEO_SCRIPT.md](docs/VIDEO_SCRIPT.md)
+- [docs/ACADEMIC_ALIGNMENT.md](docs/ACADEMIC_ALIGNMENT.md)
